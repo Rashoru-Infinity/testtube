@@ -1,0 +1,18 @@
+version: '3'
+services:
+  testtube:
+    image: rashoru/testtube
+    volumes:
+      - testtube:/env
+    environment:
+      - PASSWORD=testtube
+      - RSAKEY=/env/ssh/ssh_host_rsa_key
+      - ECDSAKEY=/env/ssh/ssh_host_ecdsa_key
+      - ED25519KEY=/env/ssh/ssh_host_ed25519_key
+      - GITUSERNAME=user
+      - GITUSEREMAIL=user@example.com
+    ports:
+      - "30022:22"
+    restart: always
+volumes:
+  testtube:
